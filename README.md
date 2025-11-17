@@ -21,10 +21,27 @@ SpringbootCrud/
  │   ├── main/
  │   │   ├── java/com/example/crud/   # Application source code
  │   │   └── resources/               # Configuration files
- │   └── test/                        # Unit and integration tests #No tests yet
+ │   └── test/                        # Unit and integration tests <!-- No tests yet, placeholder for future coverage -->
  ├── pom.xml                          # Maven dependencies
  └── README.md                        # Project documentation
 
+### Key Directories and Files:
+
+*   **`src/main/java`**: Core application source code. Contains:
+    *   **`com.crudspringboot.SpringbootCrud`**: The root package for the application.
+    *   **`controller`**: Handle HTTP requests and responses.
+    *   **`service`**: Classes containing the core business logic of the application.
+    *   **`repository`**: Data access layer (JPA/Hibernate).
+    *   **`model`**:  Domain models mapped to database tables.
+    <!--*   **`config`**: Configuration classes for setting up various aspects of the Spring application.-->
+*   **`src/main/resources`**: Contains application resources and configuration.
+    *   **`application.properties`**: Configuration properties for the Spring Boot application.
+    <!--*   **`static`**: For static web resources like HTML, CSS, JavaScript, and images.
+    *   **`templates`**: For server-side templates (e.g., Thymeleaf, FreeMarker). -->
+*   **`src/test/java`**: Contains unit and integration tests for the application.
+*   **`pom.xml`**: Maven build file. Defines dependencies, plugins and project build lifecycle.
+*   **`.gitignore`**: Specifies files and directories that Git should ignore.
+*    **`swagger-ui/`** Auto-generated API documentation (available at `/swagger-ui.html` when running).
 ---
 
 ## ⚙️ Technologies Used

@@ -1,5 +1,9 @@
 # Spring Boot CRUD Application
 
+![Java](https://img.shields.io/badge/Java-17-blue.svg)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen.svg)
+![Maven](https://img.shields.io/badge/Maven-Build-orange.svg)
+
 A simple **Spring Boot CRUD (Create, Read, Update, Delete)** application demonstrating RESTful API development with Java, Spring Boot, and Maven.  
 This project is designed as a learning resource and starter template for building scalable backend services.
 

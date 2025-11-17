@@ -34,4 +34,12 @@ public class StudentService {
                 return studentRepository.save(existingStudent);
             });
     }
+
+    public Optional<Student> deleteStudent(String id) {
+        return studentRepository.findById(id)
+                .map(response -> {
+                    studentRepository.delete(response);
+                    return response;
+                });
+    }
 }

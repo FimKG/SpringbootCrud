@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequestMapping(path = "api/student")
 public class StudentController {
     /**
-     * Delete	DELETE	http://localhost:8080/student/1	—
+     * Inject Service class
      */
     @Autowired
     StudentService studentService;
@@ -26,10 +26,14 @@ public class StudentController {
      *
      * @param student the Student object received in the request body, containing student details
      * @return ResponseEntity containing the created Student object and HTTP status 201 (Created)
+     *         or 400 Bad Request response
      */
     @PostMapping("/create")
     public ResponseEntity<Student> createStudent(@RequestBody Student student){
-        return new ResponseEntity<>((studentService.createStudent(student)),HttpStatus.CREATED);
+//        return new ResponseEntity<>((studentService.createStudent(student)),HttpStatus.CREATED);
+        return Optional.ofNullable(studentService.createStudent(student))
+                .map(response -> ResponseEntity.status(HttpStatus.CREATED).body(response))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
     /**
@@ -64,4 +68,19 @@ public class StudentController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    /**
+     * HTTP DELETE to Deletes an existing student record identified by the given ID.
+     * Delete	DELETE	http://localhost:8080/student/deleteById/1
+     *
+     * @param id the unique identifier of the student
+     *
+     * @return ResponseEntity containing the updated student
+     *         or 404 Not Found response
+     */
+    @DeleteMapping("/deleteById/{id}")
+    public ResponseEntity<Student> deleteStudent(@PathVariable String id) {
+        return studentService.deleteStudent(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }
